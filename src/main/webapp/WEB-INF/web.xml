@@ -5,5 +5,15 @@
          version="4.0">
 
 
+    <servlet>
+        <servlet-name>productController</servlet-name>
+        <servlet-class>ca.costsaver.web.controller.ProductController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>productController</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
