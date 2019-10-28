@@ -17,6 +17,16 @@ public class Product {
         return id==null;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Product{");
+        sb.append("id=").append(id);
+        sb.append(", barCode='").append(barCode).append('\'');
+        sb.append(", productName='").append(productName).append('\'');
+        sb.append('}');
+        return sb.toString();
+    }
+
     public Integer getId() {
         return id;
     }

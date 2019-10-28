@@ -1,6 +1,7 @@
 package ca.costsaver.repository;
 
 import ca.costsaver.entity.Product;
+import ca.exception.productRepository.ProductNotFoundException;
 
 import java.util.Collection;
 import java.util.Map;
@@ -28,7 +29,9 @@ public class InMemoryProductRepository implements ProductRepository {
 
     @Override
     public Product get(int id) {
-        return repository.get(id);
+        Product p = repository.get(id);
+        if (p==null) throw new ProductNotFoundException("product with id" + id + " not avaliable");
+        return p;
     }
 
     @Override

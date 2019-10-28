@@ -25,7 +25,7 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
 
-        switch (action ==null ? "all" : action){
+        switch (action==null ? "":action){
             case "delete":
                 repository.delete(Integer.parseInt(req.getParameter("id")));
                 break;
