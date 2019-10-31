@@ -1,6 +1,7 @@
 package ca.costsaver.repository;
 
 import ca.costsaver.entity.Product;
+import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
 import ca.exception.productRepository.ProductNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +12,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InMemoryProductRepositoryTest {
+public class ProductRepositoryImplInMemoryTest {
 
-    ProductRepository repository = new InMemoryProductRepository();
+    ProductRepository repository = new ProductRepositoryImplInMemory();
 
 
     List<Product> productList = Arrays.asList(

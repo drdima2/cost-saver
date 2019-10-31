@@ -1,6 +1,7 @@
-package ca.costsaver.repository;
+package ca.costsaver.repository.impl;
 
 import ca.costsaver.entity.Product;
+import ca.costsaver.repository.ProductRepository;
 import ca.exception.productRepository.ProductNotFoundException;
 
 import java.util.Collection;
@@ -8,7 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class InMemoryProductRepository implements ProductRepository {
+public class ProductRepositoryImplInMemory implements ProductRepository {
 
 
     private Map<Integer, Product> repository = new ConcurrentHashMap<>();

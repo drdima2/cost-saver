@@ -1,7 +1,7 @@
 package ca.costsaver.main;
 
 import ca.costsaver.entity.Product;
-import ca.costsaver.repository.InMemoryProductRepository;
+import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
 import ca.costsaver.repository.ProductRepository;
 
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Main01 {
 
     public static void main(String[] args) {
-        ProductRepository repository = new InMemoryProductRepository();
+        ProductRepository repository = new ProductRepositoryImplInMemory();
 
         List<Product> productList = Arrays.asList(
                 new Product(null,"123","Cola"),
