@@ -14,15 +14,10 @@ import java.io.IOException;
 public class ProductController extends HttpServlet {
 
 
+
     //ProductRepository repository = new ProductRepositoryImplInMemory();
-    ProductRepository repository;
+    ProductRepository repository = new ProductRepositoryDao();
 
-    {
-
-
-        repository = new ProductRepositoryDao();
-        //repository = new ProductRepositoryImplInMemory();
-    }
 
 
     @Override
@@ -32,6 +27,7 @@ public class ProductController extends HttpServlet {
         switch (action == null ? "" : action) {
             case "delete":
                 repository.delete(Integer.parseInt(req.getParameter("id")));
+                resp.sendRedirect("/");
                 break;
             case "edit":
                 req.setAttribute("product", repository.get(Integer.parseInt(req.getParameter("id"))));
@@ -64,8 +60,9 @@ public class ProductController extends HttpServlet {
 
         repository.save(product);
 
-        req.setAttribute("productList", repository.getAll());
-        req.getRequestDispatcher("/WEB-INF/JSP/index.jsp").forward(req, resp);
+        //req.setAttribute("productList", repository.getAll());
+        //req.getRequestDispatcher("/WEB-INF/JSP/index.jsp").forward(req, resp);
+        resp.sendRedirect("/");
 
     }
 }
