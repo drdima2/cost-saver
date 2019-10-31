@@ -5,15 +5,16 @@
 <html>
 	<body>
 
-		<form method="post">
+		<form name="products" method="post">
 			<input type="text" name="barCode">
 			<br>
 			<input type="text" name="productName">
 			<br>
 			<input type="hidden" name="id" value="">
 			<input type="submit">
+			<br>
+			<a href="/?action=stores">Stores</a>
 		</form>
-
 
 		<br>
 		<br>
@@ -40,6 +41,10 @@
 			</c:forEach>
 		</table>
 
+		<br>
+		<br>
+		<br>
+		<br>
 
 	</body>
 </html>

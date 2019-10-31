@@ -6,15 +6,15 @@ public class Product {
     private String productName;
 
 
-    public Product(Integer id , String barCode, String productName) {
+    public Product(Integer id, String barCode, String productName) {
         this.id = id;
         this.barCode = barCode;
         this.productName = productName;
     }
 
 
-    public boolean isNew(){
-        return id==null;
+    public boolean isNew() {
+        return id == null;
     }
 
     public Integer getId() {

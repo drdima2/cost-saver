@@ -15,5 +15,15 @@
         <url-pattern></url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>storeController</servlet-name>
+        <servlet-class>ca.costsaver.web.controller.StoreController</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>storeController</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
