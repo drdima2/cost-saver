@@ -34,9 +34,9 @@
 			<c:forEach items="${storeList}" var="store">
 				<jsp:useBean id="store" type="ca.costsaver.entity.Store"/>
 				<tr>
-					<td>${store.productName}</td>
-					<td><a href="/?id=${store.storeId}&action=edit">Edit</a></td>
-					<td><a href="/?id=${store.storeId}&action=delete">Delete</a></td>
+					<td>${store.storeName}</td>
+					<td><a href="?storeId=${store.storeId}&action=edit">Edit</a></td>
+					<td><a href="?storeId=${store.storeId}&action=delete">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>

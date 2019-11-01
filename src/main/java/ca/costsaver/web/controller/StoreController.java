@@ -24,16 +24,19 @@ public class StoreController extends HttpServlet {
         switch (action == null ? "all" : action) {
             case "delete":
                 storeRepository.delete(Integer.parseInt(req.getParameter("storeId")));
+                resp.sendRedirect("/stores");
                 break;
 //            case "edit":
 //                req.setAttribute("product", storeRepository.get(Integer.parseInt(req.getParameter("storeId"))));
 //                req.getRequestDispatcher("/WEB-INF/JSP/edit-product.jsp").forward(req, resp);
 //                break;
-
+            case "all":
+                req.setAttribute("storeList", storeRepository.getAll());
+                req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
+            break;
 
         }
-        req.setAttribute("storeList", storeRepository.getAll());
-        req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
+
 
 
     }
@@ -56,8 +59,8 @@ public class StoreController extends HttpServlet {
         }
 
 
-        req.setAttribute("storeList", storeRepository.getAll());
-        req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
-
+        //req.setAttribute("storeList", storeRepository.getAll());
+        //req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
+        resp.sendRedirect("/stores");
     }
 }

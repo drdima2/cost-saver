@@ -22,7 +22,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>storeController</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/stores</url-pattern>
     </servlet-mapping>
 
 

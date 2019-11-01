@@ -30,9 +30,9 @@ public class ProductController extends HttpServlet {
                 req.setAttribute("product", productRepository.get(Integer.parseInt(req.getParameter("id"))));
                 req.getRequestDispatcher("/WEB-INF/JSP/edit-product.jsp").forward(req, resp);
                 break;
-            case "stores":
-                req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
-                break;
+//            case "stores":
+//                req.getRequestDispatcher("/WEB-INF/JSP/stores.jsp").forward(req, resp);
+//                break;
 
         }
         req.setAttribute("productList", productRepository.getAll());

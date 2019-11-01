@@ -5,6 +5,22 @@
 <html>
 	<body>
 
+
+		<style>
+			.button {
+				display: block;
+				width: 115px;
+				height: 25px;
+				background: #4E9CAF;
+				padding: 10px;
+				text-align: center;
+				border-radius: 5px;
+				color: white;
+				font-weight: bold;
+			}
+
+		</style>
+
 		<form name="products" method="post">
 			<input type="text" name="barCode">
 			<br>
@@ -13,7 +29,7 @@
 			<input type="hidden" name="id" value="">
 			<input type="submit">
 			<br>
-			<a href="/?action=stores">Stores</a>
+			<a class="button" href="/stores">Stores</a>
 		</form>
 
 		<br>

@@ -23,11 +23,11 @@ public class Store {
         this.storeId = storeId;
     }
 
-    public String getProductName() {
+    public String getStoreName() {
         return storeName;
     }
 
-    public void setProductName(String productName) {
+    public void setStoreName(String storeName) {
         this.storeName = storeName;
     }
 }
