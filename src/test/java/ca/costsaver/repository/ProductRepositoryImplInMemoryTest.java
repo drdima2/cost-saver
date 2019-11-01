@@ -44,7 +44,7 @@ public class ProductRepositoryImplInMemoryTest {
 
     @Test(expected = ProductNotFoundException.class)
     public void delete() {
-        productList.forEach(repository::save);
+        //productList.forEach(repository::save);
         repository.delete(2);
         repository.get(2);
 
