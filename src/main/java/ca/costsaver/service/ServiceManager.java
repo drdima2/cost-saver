@@ -38,8 +38,7 @@ public class ServiceManager {
         try {
             //Class.forName("org.postgresql.Driver");
             Class.forName(getProperty("db.driver"));
-            connection = DriverManager.getConnection(getProperty("db.url"),
-                     getProperty("db.username"), getProperty("db.password"));
+            connection = DriverManager.getConnection(getProperty("db.url"));
             //statement = connection.createStatement();
             connection.setAutoCommit(false);
         } catch (ClassNotFoundException e) {
@@ -61,6 +60,12 @@ public class ServiceManager {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        String herokuDBUrl = System.getenv("JDBC_DATABASE_URL");
+        if (herokuDBUrl!=null){
+            applicationProperties.setProperty("db.url",herokuDBUrl);
+        }
+
     }
 
     private String getProperty(String key){
