@@ -2,7 +2,7 @@ package ca.costsaver.repository.impl;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
-import ca.exception.productRepository.ProductNotFoundException;
+import ca.costsaver.exception.productRepository.ProductNotFoundException;
 
 import java.util.Collection;
 import java.util.Map;

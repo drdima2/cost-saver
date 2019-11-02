@@ -10,26 +10,13 @@ import java.util.List;
 
 public class ProductRepositoryDao implements ProductRepository {
 
-    private Connection connection = null;
+    private Connection connection;
 
     private String sql;
     private Statement statement;
 
-    public ProductRepositoryDao()  {
-
-        try {
-            Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/costsaver"
-                    , "costsaver", "password");
-            //statement = connection.createStatement();
-            connection.setAutoCommit(false);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-
+    public ProductRepositoryDao(Connection connection)  {
+        this.connection=connection;
     }
 
     @Override

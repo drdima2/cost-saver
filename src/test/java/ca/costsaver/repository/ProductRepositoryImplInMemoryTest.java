@@ -2,7 +2,7 @@ package ca.costsaver.repository;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
-import ca.exception.productRepository.ProductNotFoundException;
+import ca.costsaver.exception.productRepository.ProductNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
 

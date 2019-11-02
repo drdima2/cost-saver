@@ -4,6 +4,7 @@ import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
 import ca.costsaver.repository.impl.ProductRepositoryDao;
 import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
+import ca.costsaver.service.ServiceManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +17,14 @@ public class ProductController extends HttpServlet {
 
 
     //ProductRepository repository = new ProductRepositoryImplInMemory();
-    ProductRepository repository = new ProductRepositoryDao();
+    ProductRepository repository;
 
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+         repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
