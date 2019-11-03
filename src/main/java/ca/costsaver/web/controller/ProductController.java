@@ -4,6 +4,7 @@ import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
 import ca.costsaver.repository.impl.ProductRepositoryDao;
 import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
+import ca.costsaver.service.ProductService;
 import ca.costsaver.service.ServiceManager;
 
 import javax.servlet.ServletException;
@@ -16,14 +17,18 @@ public class ProductController extends HttpServlet {
 
 
 
-    //ProductRepository repository = new ProductRepositoryImplInMemory();
-    ProductRepository repository;
+
+
+
+    ProductService productService;
 
 
     @Override
     public void init() throws ServletException {
         super.init();
-         repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
+        //ProductRepository repository = new ProductRepositoryImplInMemory();
+        ProductRepository repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
+        productService = new ProductService(repository);
     }
 
     @Override
@@ -32,15 +37,15 @@ public class ProductController extends HttpServlet {
 
         switch (action == null ? "" : action) {
             case "delete":
-                repository.delete(Integer.parseInt(req.getParameter("id")));
+                productService.delete(Integer.parseInt(req.getParameter("id")));
                 resp.sendRedirect("/");
                 break;
             case "edit":
-                req.setAttribute("product", repository.get(Integer.parseInt(req.getParameter("id"))));
+                req.setAttribute("product", productService.get(Integer.parseInt(req.getParameter("id"))));
                 req.getRequestDispatcher("/WEB-INF/JSP/edit-product.jsp").forward(req, resp);
                 break;
             default:
-                req.setAttribute("productList", repository.getAll());
+                req.setAttribute("productList", productService.getAll());
                 req.getRequestDispatcher("/WEB-INF/JSP/index.jsp").forward(req, resp);
 
         }
@@ -64,7 +69,7 @@ public class ProductController extends HttpServlet {
 
         Product product = new Product(id.isEmpty() ? null : Integer.valueOf(id), barCode, productName);
 
-        repository.save(product);
+        productService.save(product);
 
         //req.setAttribute("productList", repository.getAll());
         //req.getRequestDispatcher("/WEB-INF/JSP/index.jsp").forward(req, resp);
