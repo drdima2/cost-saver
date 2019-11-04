@@ -1,7 +1,7 @@
 package ca.costsaver.service;
 
 import ca.costsaver.repository.ProductRepository;
-import ca.costsaver.repository.impl.ProductRepositoryDao;
+import ca.costsaver.repository.impl.ProductRepositoryImplDao;
 
 import javax.servlet.ServletContext;
 import java.io.IOException;
@@ -48,7 +48,7 @@ public class ServiceManager {
             e.printStackTrace();
         }
 
-        productRepository = new ProductRepositoryDao(connection);
+        productRepository = new ProductRepositoryImplDao(connection);
     }
 
     private Properties applicationProperties = new Properties();

@@ -2,10 +2,9 @@ package ca.costsaver.web.controller;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
-import ca.costsaver.repository.impl.ProductRepositoryDao;
-import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
 import ca.costsaver.service.ProductService;
 import ca.costsaver.service.ServiceManager;
+import org.slf4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,10 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class ProductController extends HttpServlet {
 
 
-
+    private static final Logger log = getLogger(ProductController.class);
 
 
 
@@ -29,11 +30,13 @@ public class ProductController extends HttpServlet {
         //ProductRepository repository = new ProductRepositoryImplInMemory();
         ProductRepository repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
         productService = new ProductService(repository);
+        log.info("Servlet ProductController has been initialized");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
+        log.debug("action={}",action);
 
         switch (action == null ? "" : action) {
             case "delete":
@@ -63,9 +66,8 @@ public class ProductController extends HttpServlet {
         String productName = req.getParameter("productName");
         String id = req.getParameter("id");
 
-        System.out.println(id);
-        System.out.println(barCode);
-        System.out.println(productName);
+        log.debug("incoming paramaters id={} barCode={} productName={}",id,barCode,productName);
+
 
         Product product = new Product(id.isEmpty() ? null : Integer.valueOf(id), barCode, productName);
 

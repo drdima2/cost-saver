@@ -2,7 +2,6 @@ package ca.costsaver.service;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
-import ca.costsaver.repository.impl.ProductRepositoryDao;
 
 import java.util.Collection;
 

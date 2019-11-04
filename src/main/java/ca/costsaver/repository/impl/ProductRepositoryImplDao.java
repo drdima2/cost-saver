@@ -2,20 +2,24 @@ package ca.costsaver.repository.impl;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
+import org.slf4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class ProductRepositoryDao implements ProductRepository {
+import static org.slf4j.LoggerFactory.getLogger;
 
+public class ProductRepositoryImplDao implements ProductRepository {
+
+    private static final Logger log = getLogger(ProductRepositoryImplDao.class);
     private Connection connection;
 
     private String sql;
     private Statement statement;
 
-    public ProductRepositoryDao(Connection connection)  {
+    public ProductRepositoryImplDao(Connection connection)  {
         this.connection=connection;
     }
 
@@ -131,7 +135,7 @@ public class ProductRepositoryDao implements ProductRepository {
 
             //connection.close();
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.warn("Product not found. {}",e.getMessage(),e);
         }
 
         return products;

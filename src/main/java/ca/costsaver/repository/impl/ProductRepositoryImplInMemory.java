@@ -3,15 +3,18 @@ package ca.costsaver.repository.impl;
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
 import ca.costsaver.exception.productRepository.ProductNotFoundException;
+import org.slf4j.Logger;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class ProductRepositoryImplInMemory implements ProductRepository {
 
-
+    private static final Logger log = getLogger(ProductRepositoryImplInMemory.class);
     private Map<Integer, Product> repository = new ConcurrentHashMap<>();
     private AtomicInteger counter = new AtomicInteger(0);
 
@@ -31,7 +34,10 @@ public class ProductRepositoryImplInMemory implements ProductRepository {
     @Override
     public Product get(int id) {
         Product p = repository.get(id);
-        if (p==null) throw new ProductNotFoundException("product with id" + id + " not avaliable");
+        if (p==null) {
+            log.warn("Product id={} not found. ",id);
+            throw new ProductNotFoundException("product with id" + id + " not avaliable");
+        }
         return p;
     }
 
