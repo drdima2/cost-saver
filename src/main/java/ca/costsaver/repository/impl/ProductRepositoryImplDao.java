@@ -14,10 +14,19 @@ import static org.slf4j.LoggerFactory.getLogger;
 public class ProductRepositoryImplDao implements ProductRepository {
 
     private static final Logger log = getLogger(ProductRepositoryImplDao.class);
+
+
     private Connection connection;
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 
     private String sql;
     private Statement statement;
+
+    public  ProductRepositoryImplDao(){
+
+    }
 
     public ProductRepositoryImplDao(Connection connection)  {
         this.connection=connection;
