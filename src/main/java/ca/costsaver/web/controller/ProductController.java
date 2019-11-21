@@ -21,6 +21,8 @@ public class ProductController extends HttpServlet {
 
 
 
+
+
     ProductService productService;
 
 
@@ -31,12 +33,14 @@ public class ProductController extends HttpServlet {
         ProductRepository repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
         productService = new ProductService(repository);
         log.info("Servlet ProductController has been initialized");
+
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         log.debug("action={}",action);
+
 
         switch (action == null ? "" : action) {
             case "delete":

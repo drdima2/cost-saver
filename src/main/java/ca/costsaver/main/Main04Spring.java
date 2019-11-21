@@ -3,6 +3,7 @@ package ca.costsaver.main;
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.impl.ProductRepositoryImplDao;
 import ca.costsaver.repository.impl.ProductRepositoryImplInMemory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,10 +15,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main04Spring {
+
+
+
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring/context.xml");
+
+
         //ProductRepositoryImplInMemory inMemory = (ProductRepositoryImplInMemory) ctx.getBean("productRepositoryImplInMemory");
         ProductRepositoryImplInMemory inMemory = ctx.getBean(ProductRepositoryImplInMemory.class);
+
 
         System.out.println(inMemory.getClass().getSimpleName());
 
