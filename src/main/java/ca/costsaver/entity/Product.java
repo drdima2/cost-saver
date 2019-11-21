@@ -1,10 +1,31 @@
 package ca.costsaver.entity;
 
+
+
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Getter
+@Setter
+@Entity
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String barCode;
     private String productName;
 
+
+    public Product() {
+    }
 
     public Product(Integer id , String barCode, String productName) {
         this.id = id;
@@ -13,9 +34,9 @@ public class Product {
     }
 
 
-    public boolean isNew(){
-        return id==null;
-    }
+//    public boolean isNew(){
+//        return id==null;
+//    }
 
     @Override
     public String toString() {
@@ -27,27 +48,5 @@ public class Product {
         return sb.toString();
     }
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getBarCode() {
-        return barCode;
-    }
-
-    public void setBarCode(String barCode) {
-        this.barCode = barCode;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
 }

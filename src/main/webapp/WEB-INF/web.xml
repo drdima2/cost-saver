@@ -7,15 +7,45 @@
 
 
 
+    <!--<servlet>-->
+        <!--<servlet-name>productController</servlet-name>-->
+        <!--<servlet-class>ca.costsaver.web.controller.ProductController</servlet-class>-->
+        <!--<load-on-startup>0</load-on-startup>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>productController</servlet-name>-->
+        <!--<url-pattern></url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+
     <servlet>
-        <servlet-name>productController</servlet-name>
-        <servlet-class>ca.costsaver.web.controller.ProductController</servlet-class>
+        <servlet-name>spring-servlet</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>0</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-name>productController</servlet-name>
-        <url-pattern></url-pattern>
+        <servlet-name>spring-servlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/dispatcher-servlet.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>
 
 
 </web-app>

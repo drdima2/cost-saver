@@ -1,45 +1,46 @@
 package ca.costsaver.web.controller;
 
 import ca.costsaver.entity.Product;
-import ca.costsaver.repository.ProductRepository;
 import ca.costsaver.service.ProductService;
-import ca.costsaver.service.ServiceManager;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class ProductController extends HttpServlet {
+@Controller
+@RequestMapping("/product")
+public class ProductController  {
 
 
     private static final Logger log = getLogger(ProductController.class);
 
 
-
-
-
+    @Autowired
     ProductService productService;
 
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        //ProductRepository repository = new ProductRepositoryImplInMemory();
-        ProductRepository repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
-        productService = new ProductService(repository);
-        log.info("Servlet ProductController has been initialized");
+//    @Override
+//    public void init() throws ServletException {
+//        super.init();
+//        //ProductRepository repository = new ProductRepositoryImplInMemory();
+//        ProductRepository repository= ServiceManager.getInstance(getServletContext()).getProductRepository();
+//        productService = new ProductServiceImpl(repository);
+//        log.info("Servlet ProductController has been initialized");
+//
+//    }
 
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @GetMapping(value = "/all")
+    public void listAllProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        log.debug("action={}",action);
+        log.debug("action={}", action);
 
 
         switch (action == null ? "" : action) {
@@ -61,7 +62,7 @@ public class ProductController extends HttpServlet {
     }
 
 
-    @Override
+
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("UTF-8");
@@ -70,7 +71,7 @@ public class ProductController extends HttpServlet {
         String productName = req.getParameter("productName");
         String id = req.getParameter("id");
 
-        log.debug("incoming paramaters id={} barCode={} productName={}",id,barCode,productName);
+        log.debug("incoming paramaters id={} barCode={} productName={}", id, barCode, productName);
 
 
         Product product = new Product(id.isEmpty() ? null : Integer.valueOf(id), barCode, productName);

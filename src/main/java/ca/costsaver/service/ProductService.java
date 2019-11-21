@@ -5,25 +5,13 @@ import ca.costsaver.repository.ProductRepository;
 
 import java.util.Collection;
 
-public class ProductService {
+public interface ProductService {
 
-    ProductRepository repository;
 
-    public ProductService(ProductRepository repository) {
-        this.repository = repository;
-    }
 
-    public Product save(Product product){
-       return repository.save(product);
-    }
-    public boolean delete(int id){
-        return repository.delete(id);
-    }
-    public Product get(int id){
-        return repository.get(id);
-    }
-    public Collection<Product> getAll(){
-        return repository.getAll();
-    }
+    public Product save(Product product);
+    public boolean delete(int id);
+    public Product get(int id);
+    public Collection<Product> getAll();
 
 }
