@@ -5,7 +5,7 @@
 <html>
 	<body>
 
-		<form method="post">
+		<form method="post" action="/product/add">
 
 			<input type="text" name="barCode" value="${product.barCode}">
 			<br>

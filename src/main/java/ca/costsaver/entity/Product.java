@@ -5,10 +5,7 @@ package ca.costsaver.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @Getter
@@ -17,7 +14,10 @@ import javax.persistence.Id;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="product_pkey")
+    @SequenceGenerator(name="product_pkey",sequenceName="product_id_seq", allocationSize=1)
     private Integer id;
 
     private String barCode;

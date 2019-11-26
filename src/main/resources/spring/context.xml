@@ -9,8 +9,8 @@
 
     <!--<bean id="productRepositoryImplDao" class="ca.costsaver.repository.impl.ProductRepositoryImplDao">-->
 
-    <bean id="productRepositoryImplInMemory" class="ca.costsaver.repository.impl.ProductRepositoryImplInMemory"/>
-    <bean id="productRepositoryImpDao" class="ca.costsaver.repository.impl.ProductRepositoryImplDao"/>
+    <!--<bean id="productRepositoryImplInMemory" class="ca.costsaver.repository.impl.ProductRepositoryImplInMemory"/>-->
+    <!--<bean id="productRepositoryImpDao" class="ca.costsaver.repository.impl.ProductRepositoryImplDao"/>-->
 
 
 

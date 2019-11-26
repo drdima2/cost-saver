@@ -5,7 +5,7 @@
 <html>
 	<body>
 
-		<form method="post">
+		<form method="post" action="/product/add">
 			<input type="text" name="barCode">
 			<br>
 			<input type="text" name="productName">
@@ -34,8 +34,8 @@
 				<tr>
 					<td>${product.barCode}</td>
 					<td>${product.productName}</td>
-					<td><a href="/?id=${product.id}&action=edit">Edit</a></td>
-					<td><a href="/?id=${product.id}&action=delete">Delete</a></td>
+					<td><a href="/product/edit/${product.id}">Edit</a></td>
+					<td><a href="/product/delete/${product.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>

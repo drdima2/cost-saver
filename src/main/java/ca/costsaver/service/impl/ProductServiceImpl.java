@@ -3,36 +3,34 @@ package ca.costsaver.service.impl;
 import ca.costsaver.entity.Product;
 import ca.costsaver.repository.ProductRepository;
 import ca.costsaver.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
 
-    ProductRepository repository;
+    @Autowired
+    private ProductRepository repository;
 
-    public ProductServiceImpl(ProductRepository repository) {
-        this.repository = repository;
+
+    public Product save(Product product) {
+        return repository.save(product);
     }
 
-    public Product save(Product product){
-       return repository.save(product);
-    }
-    public boolean delete(int id){
+    public boolean delete(int id) {
         repository.deleteById(id);
         return true;
     }
-    public Product get(int id){
+
+    public Product get(int id) {
         return repository.findById(id).get();
     }
-    public Collection<Product> getAll(){
-        List<Product> actualList = new ArrayList<>();
-        repository.findAll().iterator().forEachRemaining(actualList::add);
-        return actualList;
+
+    public Collection<Product> getAll() {
+        return repository.findAll((Sort.by(Sort.Direction.ASC, "id")));
     }
 
 }
