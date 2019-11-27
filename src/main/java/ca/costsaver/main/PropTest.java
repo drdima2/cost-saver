@@ -18,7 +18,7 @@ public class PropTest {
         Properties properties = new Properties();
         properties.load((propTest.getClass().getClassLoader().getResourceAsStream("application.properties")));
 
-        URI dbUrl = new URI(properties.getProperty("db.url"));
+        URI dbUrl = new URI(System.getenv("DATABASE_URL"));
 
 
         System.out.println(dbUrl.getHost());

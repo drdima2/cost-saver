@@ -24,19 +24,19 @@ public class CostSaverApplicationListener implements ServletContextListener {
         //ServiceManager.getInstance(sce.getServletContext());
 
         //URI url = WebApplicationContextUtils.getRequiredWebApplicationContext(sce.getServletContext()).getBean("dbUrl",URI.class);
-        DriverManagerDataSource dataSource = WebApplicationContextUtils.getRequiredWebApplicationContext(sce.getServletContext()).getBean("dataSource",DriverManagerDataSource.class);
-        String herokuDB = System.getenv("DATABASE_URL");
-        //herokuDB = "postgresql://costsaver:password@localhost:5432/costsaver";
-        if (herokuDB!=null){
-            try {
-                URI dbUrl = new URI(herokuDB);
-                dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + ':' + dbUrl.getPort() + dbUrl.getPath());
-                dataSource.setUsername(dbUrl.getUserInfo().split(":")[0] );
-                dataSource.setPassword(dbUrl.getUserInfo().split(":")[1] );
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-            }
-        }
+//        DriverManagerDataSource dataSource = WebApplicationContextUtils.getRequiredWebApplicationContext(sce.getServletContext()).getBean("dataSource",DriverManagerDataSource.class);
+//        String herokuDB = System.getenv("DATABASE_URL");
+//        herokuDB = "postgresql://costsaver:password@localhost:5432/costsaver";
+//        if (herokuDB!=null){
+//            try {
+//                URI dbUrl = new URI(herokuDB);
+//                dataSource.setUrl("jdbc:postgresql://" + dbUrl.getHost() + ':' + dbUrl.getPort() + dbUrl.getPath());
+//                dataSource.setUsername(dbUrl.getUserInfo().split(":")[0] );
+//                dataSource.setPassword(dbUrl.getUserInfo().split(":")[1] );
+//            } catch (URISyntaxException e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     @Override
