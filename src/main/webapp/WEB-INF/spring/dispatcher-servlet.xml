@@ -11,6 +11,10 @@
 
     <mvc:annotation-driven/>
     <import resource="app-ctx.xml"></import>
+    <import resource="app-ctx_validation.xml"></import>
+
+
+
 
 </beans>
 

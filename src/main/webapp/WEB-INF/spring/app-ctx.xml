@@ -44,6 +44,12 @@
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
                 <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+
+                <!--<prop key="spring.jpa.hibernate.naming.physical-strategy">${spring.jpa.hibernate.naming.physical-strategy}</prop>-->
+
+
+
+
             </props>
         </property>
     </bean>
@@ -55,6 +61,7 @@
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="true"/>
         <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect"/>
+
 
     </bean>
 

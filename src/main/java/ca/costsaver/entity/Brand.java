@@ -19,12 +19,30 @@ public class Brand {
 
     private Integer id;
 
+
     private String name;
 
+    @Column(name="logo_img")
+    private String logoImg;
 
+    @Column(name="web_site_url")
+    private String webSiteUrl;
 
+    public Brand() {
+    }
 
+    public Brand(Integer id, String name, String logoImg, String webSiteUrl) {
+        this.id = id;
+        this.name = name;
+        this.logoImg = logoImg;
+        this.webSiteUrl = webSiteUrl;
+    }
 
+    public Brand(String name, String logoImg, String webSiteUrl) {
+        this.name = name;
+        this.logoImg = logoImg;
+        this.webSiteUrl = webSiteUrl;
+    }
 
     @Override
     public String toString() {

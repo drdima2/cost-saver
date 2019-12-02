@@ -4,8 +4,11 @@ package ca.costsaver.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 @Getter
@@ -14,13 +17,20 @@ import javax.persistence.*;
 public class Product {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="product_pkey")
-    @SequenceGenerator(name="product_pkey",sequenceName="product_id_seq", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="product_pkey")
+    //@SequenceGenerator(name="product_pkey",sequenceName="product_id_seq", allocationSize=1)
     private Integer id;
 
+
+
+    @Column(name="bar_code")
+    //@NotNull(message = "must be not null")
+    //@Size(min=4,max=10/*,message = "min 4, max 10"*/ )
+    @NotBlank
     private String barCode;
+
+    @Column(name="product_name")
     private String productName;
 
 

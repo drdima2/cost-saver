@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <html>
@@ -7,12 +8,17 @@
 
 		<form method="post" action="/product/add">
 			<input type="text" name="barCode">
+			<div>
+				<form:errors path="product.barCode" />
+			</div>
 			<br>
 			<input type="text" name="productName">
 			<br>
 			<input type="hidden" name="id" value="">
 			<input type="submit">
 		</form>
+
+
 
 
 		<br>
