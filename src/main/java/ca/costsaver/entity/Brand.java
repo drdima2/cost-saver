@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -15,8 +16,6 @@ public class Brand {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-
-
     private Integer id;
 
 
@@ -27,6 +26,12 @@ public class Brand {
 
     @Column(name="web_site_url")
     private String webSiteUrl;
+
+    //@OneToMany(mappedBy = "brand", cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    //@OrderBy("finishYear DESC, beginYear DESC, id DESC")
+    //@JsonIgnore
+    //private List<Store> stores;
+
 
     public Brand() {
     }

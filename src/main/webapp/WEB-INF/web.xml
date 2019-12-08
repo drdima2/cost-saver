@@ -9,7 +9,7 @@
 
     <!--<servlet>-->
         <!--<servlet-name>productController</servlet-name>-->
-        <!--<servlet-class>ca.costsaver.web.controller.ProductController</servlet-class>-->
+        <!--<servlet-class>ca.costsaver.controller.ProductController</servlet-class>-->
         <!--<load-on-startup>0</load-on-startup>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->

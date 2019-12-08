@@ -10,6 +10,9 @@
 
 
     <mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+
     <import resource="app-ctx.xml"></import>
     <import resource="app-ctx_validation.xml"></import>
 

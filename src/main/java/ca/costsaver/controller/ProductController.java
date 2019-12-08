@@ -1,4 +1,4 @@
-package ca.costsaver.web.controller;
+package ca.costsaver.controller;
 
 import ca.costsaver.entity.Product;
 import ca.costsaver.service.ProductService;
