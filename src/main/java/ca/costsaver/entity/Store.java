@@ -31,4 +31,7 @@ public class Store {
 
     private String address;
 
+    @Column(name="is_parking_available")
+    private Boolean isParkingAvailable;
+
 }

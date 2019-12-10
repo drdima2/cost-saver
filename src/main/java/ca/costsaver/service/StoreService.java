@@ -13,7 +13,7 @@ public interface StoreService {
     public boolean delete(int id);
     public Store get(int id);
     public Collection<Store> getAll();
-    public Collection<Store> getByBrand(int brandId);
+    public Collection<Store> getByBrand(Integer brandId);
 
 
 }

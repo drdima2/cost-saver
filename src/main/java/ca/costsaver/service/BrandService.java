@@ -11,6 +11,7 @@ public interface BrandService {
 
 
     public Collection<Brand> getAll();
+    public Brand get(int id);
 
 
 

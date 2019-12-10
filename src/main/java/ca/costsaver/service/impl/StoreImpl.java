@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class StoreImpl implements StoreService {
@@ -37,7 +38,7 @@ public class StoreImpl implements StoreService {
     }
 
     @Override
-    public Collection<Store> getByBrand(int brandId) {
-        return null;
+    public List<Store> getByBrand(Integer brandId) {
+        return repository.findByBrandId(brandId);
     }
 }

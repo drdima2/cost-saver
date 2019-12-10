@@ -21,6 +21,7 @@ import java.util.List;
 import static org.slf4j.LoggerFactory.getLogger;
 
 @Controller
+@SessionAttributes({"brand","store"})
 @RequestMapping("/store")
 public class StoreController {
 
@@ -60,6 +61,22 @@ public class StoreController {
         log.debug("new Store id: {}", newStoreId);
         return "redirect:/store/all";
     }
+
+    @GetMapping(value = "/by-brand")
+    public ModelAndView listStoreByBrand(@ModelAttribute("brand") Brand brand) {
+        log.debug("brand={}",brand);
+        //Collection<Store> storeList = storeService.getByBrand(brand.getId());
+        return new ModelAndView("select-store", "storeList",storeService.getByBrand(brand.getId()));
+    }
+
+    @GetMapping(value = "/{storeId}")
+    public String selectBrand(@PathVariable Integer storeId,Model model) {
+        Store store = storeService.get(storeId);
+        model.addAttribute("store",store);
+        return "redirect:/barcode/";
+    }
+
+
 
 
 }

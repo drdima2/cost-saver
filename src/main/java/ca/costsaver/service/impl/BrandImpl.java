@@ -27,5 +27,8 @@ public class BrandImpl implements BrandService{
 
     }
 
-
+    @Override
+    public Brand get(int id) {
+        return repository.findById(id).get();
+    }
 }
